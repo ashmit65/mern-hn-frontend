@@ -1,16 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-
-// Placeholder Pages (will be built in Phase 3)
-const Home = () => <div className="page"><h1>Top Stories</h1></div>;
-const Bookmarks = () => <div className="page"><h1>Your Bookmarks</h1></div>;
-const Login = () => <div className="page"><h1>Login</h1></div>;
-const Signup = () => <div className="page"><h1>Signup</h1></div>;
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Bookmarks from './pages/Bookmarks';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
+  if (loading) return (
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem', color: 'var(--text-dim)' }}>
+      Loading session...
+    </div>
+  );
   return user ? children : <Navigate to="/login" />;
 };
 
@@ -28,6 +31,8 @@ function AppRoutes() {
           </PrivateRoute>
         } 
       />
+      {/* Catch all redirect to home */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
@@ -37,7 +42,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="app-container">
-          {/* Navbar will go here */}
+          <Navbar />
           <main>
             <AppRoutes />
           </main>
