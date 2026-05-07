@@ -1,16 +1,65 @@
-# React + Vite
+# HN Scraper - Frontend (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The modern React frontend for the Hacker News Scraper, built with Vite and designed with a premium glassmorphism aesthetic.
 
-Currently, two official plugins are available:
+## 🚀 Frontend Features
+- **Premium UI**: Modern dark-mode interface with glassmorphism design and smooth animations.
+- **Auth Context**: Global state management for user authentication using React Context API.
+- **Dynamic Story Feed**: Real-time filtering for bookmarked stories and paginated browsing.
+- **Responsive Design**: Fully functional on desktop, tablet, and mobile devices.
+- **Micro-animations**: Enhanced UX using `framer-motion` and `lucide-react` icons.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+### 🎨 Design Decisions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Vanilla CSS over Tailwind**: I chose to use custom Vanilla CSS for the frontend to maintain a clean and highly readable JSX structure. This allowed for more granular control over the glassmorphism aesthetic and ensured the codebase remains lightweight without additional configuration overhead.
+- **Glassmorphism Theme**: I implemented a modern, dark-themed UI to provide a premium look and feel that enhances the reading experience.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+- **Framework**: React 19 (Vite)
+- **Styling**: Vanilla CSS (Custom Glassmorphism)
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+- **API Client**: Axios (with Auth interceptors)
+- **Routing**: React Router 7
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ashmit65/mern-hn-frontend.git
+   cd mern-hn-frontend
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Environment Variables**:
+   Create a `.env` file in the root directory:
+   ```env
+   VITE_API_URL=http://localhost:5001/api
+   ```
+
+4. **Start the application**:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📂 Project Structure
+```text
+src/
+├── components/ # Reusable UI elements (Navbar, StoryCard)
+├── contexts/   # Auth state management
+├── pages/      # View components (Home, Bookmarks, Login, Signup)
+├── services/   # API communication (Axios instance)
+└── App.jsx     # Routing & Provider setup
+```
