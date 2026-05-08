@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import StoryCard from '../components/StoryCard';
+import SkeletonCard from '../components/SkeletonCard';
 import { RefreshCw, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Home = () => {
@@ -87,14 +88,6 @@ const Home = () => {
     }
   };
 
-  if (loading && stories.length === 0) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-        <RefreshCw className="animate-spin" size={40} color="var(--primary)" />
-      </div>
-    );
-  }
-
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
@@ -120,15 +113,19 @@ const Home = () => {
       )}
 
       <div className="stories-grid">
-        {stories.map((story, index) => (
-          <StoryCard 
-            key={story._id}
-            story={story}
-            rank={(page - 1) * 10 + index + 1}
-            isBookmarked={userBookmarks.includes(story._id)}
-            onToggleBookmark={toggleBookmark}
-          />
-        ))}
+        {loading ? (
+          [...Array(10)].map((_, i) => <SkeletonCard key={i} />)
+        ) : (
+          stories.map((story, index) => (
+            <StoryCard 
+              key={story._id}
+              story={story}
+              rank={(page - 1) * 10 + index + 1}
+              isBookmarked={userBookmarks.includes(story._id)}
+              onToggleBookmark={toggleBookmark}
+            />
+          ))
+        )}
       </div>
 
       <div className="pagination">
