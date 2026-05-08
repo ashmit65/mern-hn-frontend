@@ -53,12 +53,12 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link to="/login" className="auth-link" onClick={closeMenu}>
-              <LogIn size={18} />
+            <Link to="/login" className="btn-outline login-btn" onClick={closeMenu}>
+              <LogIn size={18} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
               Login
             </Link>
             <Link to="/signup" className="btn-primary join-btn" onClick={closeMenu}>
-              <UserPlus size={18} />
+              <UserPlus size={18} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
               Join
             </Link>
           </>
